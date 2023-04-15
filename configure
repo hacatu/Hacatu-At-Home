@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+if [ ! -d "/usr/include/crater" ]; then
+	git clone https://github.com/hacatu/Crater.git crater
+	pushd crater
+	make BUILD_ROOT=build/release test
+	sudo make BUILD_ROOT=build/release install
+	popd
+fi
+if [ ! -d "/usr/include/nut" ]; then
+	git clone https://github.com/hacatu/Number-Theory-Utils.git nut
+	pushd nut
+	make BUILD_ROOT=build/release test
+	sudo make BUILD_ROOT=build/release install
+	popd
+fi
+
