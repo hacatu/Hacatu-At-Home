@@ -18,7 +18,7 @@ a_len = a_stop - a_start
 num_subranges = 100
 
 async def a_do_one_subrange(a_start, a_stop):
-	proc = await asyncio.create_subprocess_shell(fr'time ./p833d --subrange 10e35.dat {a_start} {a_stop} 2>&1 | tee >(grep -vP "(^\d+\.\d+%$)|(^bucket: \[\d+, \d+\)$)" > {a_start}.{a_stop}.log)')
+	proc = await asyncio.create_subprocess_shell(fr'time ./p833d --subrange 10e35.dat {a_start} {a_stop} 2>&1 | tee >(grep -vP "(^\d+\.\d+%$)|(^bucket: \[\d+, \d+\)$)" > {a_start}.{a_stop}.log)', executable="/bin/bash")
 	await proc.wait()
 
 def do_one_subrange(a_bounds):
