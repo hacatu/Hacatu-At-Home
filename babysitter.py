@@ -30,7 +30,7 @@ if __name__ == "__main__":
 		print(f"{sys.argv[0]} i j")
 		print("Where subranges [i, j), out of [0, 100) are to be processed")
 		sys.exit(1)
-	with Pool(2) as pool:
+	with Pool(4) as pool:
 		for result in pool.imap_unordered(do_one_subrange, itt.pairwise(a_start + n*a_len//num_subranges for n in range(int(sys.argv[1]), int(sys.argv[2]) + 1)), 1):
 			pass
 
