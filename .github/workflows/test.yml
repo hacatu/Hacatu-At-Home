@@ -18,7 +18,7 @@ jobs:
         ./configure
         make
         time ./p833d --initial 10e35.dat $(bc <<< "10^35") 136101521 2>&1 | tee >(grep -vP "(^\d+\.\d+%$)|(^bucket: \[\d+, \d+\)$)" > 1.303481.log)
-        ./babysitter.py 10 12
+        ./babysitter.py 50 75
     - uses: actions/upload-artifact@v3
       with:
         name: logs
